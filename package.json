@@ -1,0 +1,10 @@
+{
+  "name": "database-templates-web-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "cd database && npm run dev",
+    "build": "cd database && npm run build",
+    "start": "cd database && npm run start",
+    "lint": "cd database && npm run lint"
+  }
+}
