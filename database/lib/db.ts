@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { AppError, getPrismaAvailabilityIssue } from '@/lib/errors';
-import { resolveDatabaseConfig, resolveDatabaseConfigs, type ResolvedDbConfig } from '@/lib/env';
+import { hasDatabaseUrlConfig, resolveDatabaseConfig, resolveDatabaseConfigs, type ResolvedDbConfig } from '@/lib/env';
 
 type PrismaRuntimeState = {
   clients: Map<string, PrismaClient>;
@@ -85,19 +85,15 @@ export async function withDb<T>(operation: (db: PrismaClient, source: string) =>
     );
   }
 
-  const state = getState();
-  let configs: ResolvedDbConfig[];
-  try {
-    configs = resolveDatabaseConfigs();
-  } catch (error) {
-    if (error instanceof AppError && error.message.includes('Missing required environment variable: DATABASE_URL')) {
-      throw new AppError(
-        'Database dinonaktifkan karena DATABASE_URL belum dikonfigurasi. Jalankan mode fallback/non-database untuk endpoint yang mendukung.',
-        503
-      );
-    }
-    throw error;
+  if (!hasDatabaseUrlConfig()) {
+    throw new AppError(
+      'Database dinonaktifkan karena DATABASE_URL belum dikonfigurasi. Jalankan mode fallback/non-database untuk endpoint yang mendukung.',
+      503
+    );
   }
+
+  const state = getState();
+  const configs = resolveDatabaseConfigs();
 
   const prioritized: ResolvedDbConfig[] = [];
   const healthyCandidates = configs.filter((item) => !state.unhealthyUrls.has(item.url));

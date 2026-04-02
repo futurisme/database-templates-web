@@ -1,7 +1,5 @@
 import { AppError } from '@/lib/errors';
 
-const requiredEnv = ['DATABASE_URL'] as const;
-
 type ParsedDbUrl = {
   label: string;
   raw: string;
@@ -165,15 +163,17 @@ function resolveForServerRuntime(primary: ParsedDbUrl): ResolvedDbConfig[] {
 
 let cached: ResolvedDbConfig[] | null = null;
 
+export function hasDatabaseUrlConfig(): boolean {
+  return Boolean(process.env.DATABASE_URL && process.env.DATABASE_URL.trim().length > 0);
+}
+
 export function resolveDatabaseConfigs(): ResolvedDbConfig[] {
   if (cached) {
     return cached;
   }
 
-  for (const key of requiredEnv) {
-    if (!process.env[key] || process.env[key]?.trim().length === 0) {
-      throw new AppError(`Missing required environment variable: ${key}`, 503);
-    }
+  if (!hasDatabaseUrlConfig()) {
+    throw new AppError('Missing required environment variable: DATABASE_URL', 503);
   }
 
   const primary = parseDbUrl(process.env.DATABASE_URL!, 'DATABASE_URL');
