@@ -1,0 +1,8 @@
+[phases.install]
+cmds = ["cd database && npm ci"]
+
+[phases.build]
+cmds = ["cd database && npm run build"]
+
+[start]
+cmd = "bash ./start.sh"
