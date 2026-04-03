@@ -53,8 +53,8 @@ New helpers:
 
 - `createNextGenSyntaxEngine(...)` for plug-and-play defaults and precompilation.
 - `precompileUltraShortSyntax(...)` for standalone shorthand precompilation.
-- `analyzeNextGenSyntax(...)` for static alias/namespace diagnostics.
-- `benchmarkNextGenSyntax(...)` for payload/core byte estimation.
+- `analyzeNextGenSyntax(...)` for static alias/namespace diagnostics (including dependency graph output).
+- `benchmarkNextGenSyntax(...)` for payload/core and gzip byte estimation.
 
 ## Core Principle
 
