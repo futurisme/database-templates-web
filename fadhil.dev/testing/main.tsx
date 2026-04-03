@@ -146,7 +146,7 @@ function ProjectCard({ title, url, image, stack, mediaProfile }: { title: string
         tone="neutral"
         density="compact"
         bleed
-        style={{ width: 'calc(100% + 0.12rem)', maxWidth: 'calc(100% + 0.12rem)', boxSizing: 'border-box', marginInline: '-0.06rem', marginBlock: '0', padding: '0', borderRadius: '9px', overflow: 'hidden', lineHeight: 0, aspectRatio: '16 / 9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        style={{ width: 'calc(100% + 0.32rem)', maxWidth: 'calc(100% + 0.32rem)', boxSizing: 'border-box', marginInline: '-0.16rem', marginBlock: '0', padding: '0', borderRadius: '9px', overflow: 'hidden', lineHeight: 0, aspectRatio: '16 / 9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         <img
           data-src={resolvedImage}
@@ -156,7 +156,7 @@ function ProjectCard({ title, url, image, stack, mediaProfile }: { title: string
           decoding="async"
           width={1920}
           height={1080}
-          style={{ display: 'block', width: '100.65%', height: '100.65%', inlineSize: '100.65%', maxWidth: 'none', borderRadius: '9px', aspectRatio: '16 / 9', objectFit: 'cover', objectPosition: '50% 50%', background: 'rgba(2, 6, 23, 0.74)', border: '0.15px solid color-mix(in oklab, var(--fwlb-border-soft) 92%, transparent)' }}
+          style={{ display: 'block', width: '101.25%', height: '101.25%', inlineSize: '101.25%', maxWidth: 'none', borderRadius: '9px', aspectRatio: '16 / 9', objectFit: 'cover', objectPosition: '50% 50%', background: 'rgba(2, 6, 23, 0.74)', border: '0.1px solid color-mix(in oklab, var(--fwlb-border-soft) 94%, transparent)' }}
         />
       </Surface>
       <Button as="a" href={url} target="_blank" rel="noopener noreferrer" tone="brand" size="sm">Open {title}</Button>
