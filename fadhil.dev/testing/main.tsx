@@ -132,7 +132,7 @@ function ProjectCard({ title, url, image, stack, mediaProfile }: { title: string
   return (
     <Surface
       tone="neutral"
-      style={{ display: 'grid', gap: '0.5rem', gridTemplateRows: 'auto minmax(0, 1fr) auto', alignContent: 'start' }}
+      style={{ width: '100%', maxWidth: '100%', display: 'grid', gap: '0.5rem', gridTemplateRows: 'auto minmax(0, 1fr) auto', alignContent: 'start' }}
       data-project-card
     >
       <StatusChip
@@ -164,7 +164,7 @@ function ProjectCard({ title, url, image, stack, mediaProfile }: { title: string
 }
 
 const projectGrid = (mediaProfile: SmartMediaProfile | null, keyPrefix = '') => (
-  <Grid minItemWidth="240" gap="sm">
+  <Grid minItemWidth="240" gap="sm" itemJustify="stretch" style={{ width: '100%' }}>
     {projects.map(([title, url, image, stack]) => (
       <ProjectCard key={`${keyPrefix}${title}`} title={title} url={url} image={image} stack={stack} mediaProfile={mediaProfile} />
     ))}

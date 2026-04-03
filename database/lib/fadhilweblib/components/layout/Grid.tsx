@@ -22,6 +22,7 @@ export function Grid({
   columnGap,
   align,
   justify,
+  itemJustify,
   syntax,
   recipe,
   className,
@@ -33,6 +34,7 @@ export function Grid({
   const rootSyntax = resolveSyntax(composeSyntax(recipe?.syntax, syntax));
   const finalAlign = rootSyntax.semantics.align ?? align ?? recipe?.logic?.align ?? 'stretch';
   const finalJustify = rootSyntax.semantics.justify ?? justify ?? recipe?.logic?.justify ?? 'start';
+  const finalItemJustify = itemJustify ?? recipe?.logic?.itemJustify ?? 'stretch';
   const templateColumns = minItemWidth
     ? `repeat(auto-fit, minmax(${resolveLengthValue(minItemWidth)}, 1fr))`
     : resolveGridColumns(columns) ?? 'repeat(1, minmax(0, 1fr))';
@@ -53,6 +55,7 @@ export function Grid({
       } as React.CSSProperties}
       data-align={finalAlign}
       data-justify={finalJustify}
+      data-item-justify={finalItemJustify}
       data-slot={(props as Record<string, unknown>)['data-slot'] ?? 'grid'}
     >
       {children}

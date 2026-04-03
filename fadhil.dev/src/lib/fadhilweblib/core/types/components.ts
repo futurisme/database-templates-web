@@ -76,6 +76,7 @@ export interface SectionProps extends Omit<React.HTMLAttributes<HTMLElement>, 't
 export interface GridRecipeLogic {
   align?: LayoutAlign;
   justify?: LayoutJustify;
+  itemJustify?: 'start' | 'center' | 'end' | 'stretch';
 }
 
 export interface GridProps extends React.HTMLAttributes<HTMLElement> {
@@ -87,6 +88,7 @@ export interface GridProps extends React.HTMLAttributes<HTMLElement> {
   columnGap?: LayoutGap;
   align?: LayoutAlign;
   justify?: LayoutJustify;
+  itemJustify?: 'start' | 'center' | 'end' | 'stretch';
   children?: React.ReactNode;
   syntax?: FadhilWebSyntax;
   recipe?: FadhilWebRecipe<never, GridRecipeLogic>;
@@ -177,6 +179,7 @@ export interface ActionGroupProps extends React.HTMLAttributes<HTMLElement> {
   gap?: LayoutGap;
   align?: LayoutAlign;
   justify?: LayoutJustify;
+  itemJustify?: 'start' | 'center' | 'end' | 'stretch';
   children?: React.ReactNode;
   syntax?: FadhilWebSyntax;
   recipe?: FadhilWebRecipe<never, ActionGroupRecipeLogic>;

@@ -37,3 +37,19 @@
 .root[data-justify='between'] {
   justify-content: space-between;
 }
+
+.root[data-item-justify='start'] {
+  justify-items: start;
+}
+
+.root[data-item-justify='center'] {
+  justify-items: center;
+}
+
+.root[data-item-justify='end'] {
+  justify-items: end;
+}
+
+.root[data-item-justify='stretch'] {
+  justify-items: stretch;
+}
