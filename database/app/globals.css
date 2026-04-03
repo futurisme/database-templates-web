@@ -324,3 +324,46 @@ button, .button-link {
   color: #7a4f00;
   font-size: 12px;
 }
+
+.portfolio-main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #e2e8f0;
+}
+
+.portfolio-main .card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.portfolio-main .badge {
+  display: inline-block;
+  font-size: 12px;
+  background: #2563eb;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.portfolio-main h1 {
+  margin: 12px 0 10px;
+  font-size: 34px;
+}
+
+.portfolio-main .muted {
+  color: #94a3b8;
+}
+
+.portfolio-main .grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.portfolio-main a {
+  color: #93c5fd;
+}

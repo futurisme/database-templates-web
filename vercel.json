@@ -6,11 +6,5 @@
       "destination": "/portfolio",
       "permanent": true
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/portfolio",
-      "destination": "/portfolio/index.html"
-    }
   ]
 }

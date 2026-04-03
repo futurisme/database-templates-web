@@ -1,96 +1,43 @@
-'use client';
-
-import {
-  ActionGroup,
-  Container,
-  Grid,
-  HeaderShell,
-  Inline,
-  KeyValueList,
-  Metric,
-  Notice,
-  ProgressBar,
-  Section,
-  Stack,
-  StatusChip,
-  Surface,
-  ThemeScope
-} from '@/lib/fadhilweblib';
+import Link from 'next/link';
 
 const projects = [
   {
-    name: 'TemplateDatabase Core',
-    category: 'Database Product',
-    status: 'stable',
-    summary: 'Pipeline template open-source dengan indexing cepat, fallback aman, dan kontribusi publik.'
+    title: 'TemplateDatabase Core',
+    summary: 'Pipeline template open-source dengan indexing cepat dan fallback aman.'
   },
   {
-    name: 'Search UX Experiments',
-    category: 'Frontend Research',
-    status: 'active',
-    summary: 'Eksperimen UX untuk instant search, compact filters, dan navigation minim friction.'
+    title: 'Search UX Experiments',
+    summary: 'Eksperimen UX untuk instant search dan filter minim friction.'
   },
   {
-    name: 'Railway Bootstrap Flow',
-    category: 'DevOps Reliability',
-    status: 'monitoring',
-    summary: 'Rangkaian startup resilient untuk mengurangi error saat cold boot dan migrasi runtime.'
+    title: 'Railway Bootstrap Flow',
+    summary: 'Startup resilient untuk mengurangi error saat cold boot.'
   }
 ] as const;
 
 export default function PortfolioPage() {
   return (
-    <ThemeScope theme="portfolio">
-      <Container maxWidth="xl" style={{ padding: '2rem 1rem' }}>
-        <Stack gap="lg">
-          <Section
-            title="Portfolio Testing"
-            description="Halaman portfolio untuk validasi antarmuka. Akses utama lewat /portfolio."
-            actions={
-              <ActionGroup>
-                <StatusChip value="Portfolio Route" tone="brand" />
-                <StatusChip value="FadhilWebLib" tone="info" />
-              </ActionGroup>
-            }
-          >
-            <Notice tone="info" title="Testing Mode" description="Bukan portfolio utama, hanya untuk validasi komponen." />
-          </Section>
+    <main className="portfolio-main">
+      <section className="card">
+        <span className="badge">/portfolio</span>
+        <h1>Portfolio Testing</h1>
+        <p className="muted">Halaman portfolio aktif dan bisa diakses normal di Vercel.</p>
+      </section>
 
-          <Grid columns={3} gap="md">
-            <Metric label="Projects" value={String(projects.length)} description="Testing scope" tone="brand" />
-            <Metric label="UI Library" value="100%" description="FadhilWebLib components" tone="success" />
-            <Metric label="Visibility" value="Direct URL" description="No public navigation link" tone="warning" />
-          </Grid>
+      <section className="grid">
+        {projects.map((project) => (
+          <article key={project.title} className="card">
+            <h3>{project.title}</h3>
+            <p className="muted">{project.summary}</p>
+          </article>
+        ))}
+      </section>
 
-          <Surface tone="neutral" style={{ padding: '1rem' }}>
-            <ProgressBar value={86} max={100} label="Readiness" tone="brand" showValue />
-          </Surface>
-
-          <Grid columns={3} gap="md">
-            {projects.map((project) => (
-              <Surface key={project.name} tone="neutral" style={{ padding: '1rem' }}>
-                <Stack>
-                  <Inline justify="between">
-                    <StatusChip value={project.category} tone="brand" />
-                    <StatusChip value={project.status} tone="neutral" />
-                  </Inline>
-                  <HeaderShell title={project.name} subtitle={project.summary} compact />
-                </Stack>
-              </Surface>
-            ))}
-          </Grid>
-
-          <Surface tone="neutral" style={{ padding: '1rem' }}>
-            <KeyValueList
-              items={[
-                { label: 'Route', value: '/portfolio' },
-                { label: 'Compatibility', value: '/Portfolio redirects' },
-                { label: 'Dependency', value: 'database/lib/fadhilweblib' }
-              ]}
-            />
-          </Surface>
-        </Stack>
-      </Container>
-    </ThemeScope>
+      <section className="card">
+        <p>
+          Compatibility: <Link href="/Portfolio">/Portfolio</Link> diarahkan ke <strong>/portfolio</strong>.
+        </p>
+      </section>
+    </main>
   );
 }
